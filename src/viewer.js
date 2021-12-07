@@ -2653,7 +2653,7 @@ function onCanvasContextMenu( event ) {
     event.preventDefault = eventArgs.preventDefault;
 }
 
-function onCanvasKeyDown( event ) {
+function onCanvasKeyDown( event ) { // issue is that ?
     var canvasKeyDownEventArgs = {
       originalEvent: event.originalEvent,
       preventDefaultAction: false,
@@ -2672,13 +2672,13 @@ function onCanvasKeyDown( event ) {
      * @property {Boolean} preventDefaultAction - Set to true to prevent default keyboard behaviour. Default: false.
      * @property {Boolean} preventVerticalPan - Set to true to prevent keyboard vertical panning. Default: false.
      * @property {Boolean} preventHorizontalPan - Set to true to prevent keyboard horizontal panning. Default: false.
-     * @property {?Object} userData - Arbitrary subscriber-defined object.
+     * @property {?Object} userData - Arbitrary subscriber-defined object.fff
      */
 
     this.raiseEvent('canvas-key', canvasKeyDownEventArgs);
 
-    if ( !canvasKeyDownEventArgs.preventDefaultAction && !event.ctrl && !event.alt && !event.meta ) {
-        switch( event.keyCode ){
+    if ( !canvasKeyDownEventArgs.preventDefaultAction && !event.ctrl && !event.alt && !event.meta ) { // should change if one is false
+        switch( event.keyCode ){ // ?? then there will be a tag
             case 38://up arrow
                 if (!canvasKeyDownEventArgs.preventVerticalPan) {
                   if ( event.shift ) {
